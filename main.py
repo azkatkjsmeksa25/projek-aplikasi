@@ -2,10 +2,10 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 
 # =====================================
-# DATA REKOMENDASI LAPTOP
+# DATA REKOMENDASI BERDASARKAN BUDGET
 # =====================================
 
-data_laptop = {
+data_rekomendasi = {
     "Di bawah Rp3 juta": {
         "nama": "Laptop Bekas Bisnis",
         "harga": "Rp2.000.000 - Rp2.999.000",
@@ -67,7 +67,48 @@ data_kebutuhan = {
 }
 
 # =====================================
-# FUNGSI MENAMPILKAN REKOMENDASI
+# DATA MEREK DAN MODEL LAPTOP (PERTEMUAN 2)
+# Harga di bawah hanya contoh untuk latihan.
+# =====================================
+
+data_laptop = [
+    {
+        "merek": "ASUS",
+        "model": "Vivobook 14",
+        "harga": 7500000,
+        "processor": "Intel Core i5",
+        "ram": "8 GB"
+    },
+    {
+        "merek": "Acer",
+        "model": "Aspire 5",
+        "harga": 8000000,
+        "processor": "Intel Core i5",
+        "ram": "8 GB"
+    },
+    {
+        "merek": "Lenovo",
+        "model": "IdeaPad Slim 3",
+        "harga": 7000000,
+        "processor": "AMD Ryzen 5",
+        "ram": "8 GB"
+    },
+    {
+        "merek": "HP",
+        "model": "Pavilion 14",
+        "harga": 8500000,
+        "processor": "Intel Core i5",
+        "ram": "16 GB"
+    }
+]
+
+
+def format_rupiah(angka):
+    return "Rp" + f"{angka:,}".replace(",", ".")
+
+
+# =====================================
+# FUNGSI REKOMENDASI LAPTOP
 # =====================================
 
 def tampilkan_rekomendasi():
@@ -81,32 +122,26 @@ def tampilkan_rekomendasi():
         )
         return
 
-    laptop = data_laptop[budget]
+    laptop = data_rekomendasi[budget]
     tujuan = data_kebutuhan[kebutuhan]
 
     hasil.delete("1.0", tk.END)
-
     hasil.insert(tk.END, "HASIL REKOMENDASI LAPTOP\n")
     hasil.insert(tk.END, "=" * 42 + "\n\n")
-
     hasil.insert(tk.END, f"Kategori     : {laptop['nama']}\n")
     hasil.insert(tk.END, f"Budget       : {laptop['harga']}\n")
     hasil.insert(tk.END, f"Kebutuhan    : {kebutuhan}\n\n")
-
     hasil.insert(tk.END, "SPESIFIKASI YANG DISARANKAN\n")
     hasil.insert(tk.END, "-" * 42 + "\n")
     hasil.insert(tk.END, f"Prosesor     : {laptop['prosesor']}\n")
     hasil.insert(tk.END, f"RAM          : {laptop['ram']}\n")
     hasil.insert(tk.END, f"Penyimpanan  : {laptop['storage']}\n\n")
-
     hasil.insert(tk.END, "KEGUNAAN\n")
     hasil.insert(tk.END, "-" * 42 + "\n")
     hasil.insert(tk.END, tujuan["kegunaan"] + "\n\n")
-
     hasil.insert(tk.END, "TIPS MEMBELI\n")
     hasil.insert(tk.END, "-" * 42 + "\n")
     hasil.insert(tk.END, tujuan["saran"] + "\n\n")
-
     hasil.insert(
         tk.END,
         "Catatan: Harga dan spesifikasi merupakan perkiraan.\n"
@@ -121,39 +156,105 @@ def reset_pilihan():
 
 
 # =====================================
-# MEMBUAT TAMPILAN APLIKASI (GUI)
+# FUNGSI MENAMPILKAN DATA LAPTOP
+# =====================================
+
+def tampilkan_data_laptop():
+    for widget in daftar_frame.winfo_children():
+        widget.destroy()
+
+    for laptop in data_laptop:
+        kartu = tk.Frame(
+            daftar_frame,
+            bg="white",
+            bd=1,
+            relief="solid",
+            padx=14,
+            pady=10
+        )
+        kartu.pack(fill="x", padx=12, pady=7)
+
+        tk.Label(
+            kartu,
+            text=f"{laptop['merek']} - {laptop['model']}",
+            font=("Arial", 12, "bold"),
+            bg="white",
+            fg="#17365D",
+            anchor="w"
+        ).pack(fill="x")
+
+        detail = (
+            f"Harga       : {format_rupiah(laptop['harga'])}\n"
+            f"Processor : {laptop['processor']}\n"
+            f"RAM          : {laptop['ram']}"
+        )
+
+        tk.Label(
+            kartu,
+            text=detail,
+            font=("Arial", 10),
+            bg="white",
+            fg="#333333",
+            justify="left",
+            anchor="w"
+        ).pack(fill="x", pady=(5, 0))
+
+
+# =====================================
+# MEMBUAT JENDELA APLIKASI
 # =====================================
 
 root = tk.Tk()
-root.title("Rekomendasi Laptop untuk Belajar")
-root.geometry("720x650")
-root.minsize(600, 580)
+root.title("Aplikasi Rekomendasi Laptop - Projek TKJ")
+root.geometry("760x700")
+root.minsize(620, 580)
 root.configure(bg="#eef3f8")
 
-# Judul
 judul = tk.Label(
     root,
-    text="REKOMENDASI LAPTOP",
-    font=("Arial", 21, "bold"),
-    bg="#eef3f8",
-    fg="#17365d"
+    text="APLIKASI REKOMENDASI LAPTOP",
+    font=("Arial", 20, "bold"),
+    bg="#17365d",
+    fg="white",
+    pady=15
 )
-judul.pack(pady=(20, 5))
+judul.pack(fill="x")
 
 subjudul = tk.Label(
     root,
+    text="Projek TKJ | Pilih laptop sesuai budget dan kebutuhan",
+    font=("Arial", 10),
+    bg="#17365d",
+    fg="white",
+    pady=0
+)
+subjudul.pack(fill="x", pady=(0, 12))
+
+# Tab untuk memisahkan fitur Pertemuan 1 dan Pertemuan 2
+notebook = ttk.Notebook(root)
+notebook.pack(fill="both", expand=True, padx=15, pady=10)
+
+tab_rekomendasi = tk.Frame(notebook, bg="#eef3f8")
+tab_daftar = tk.Frame(notebook, bg="#eef3f8")
+
+notebook.add(tab_rekomendasi, text="Pertemuan 1 - Rekomendasi")
+notebook.add(tab_daftar, text="Pertemuan 2 - Data Laptop")
+
+# =====================================
+# ISI TAB PERTEMUAN 1
+# =====================================
+
+tk.Label(
+    tab_rekomendasi,
     text="Pilih laptop sesuai budget dan kebutuhanmu",
     font=("Arial", 11),
     bg="#eef3f8",
     fg="#475569"
-)
-subjudul.pack(pady=(0, 18))
+).pack(pady=(18, 12))
 
-# Frame pilihan
-frame_pilihan = tk.Frame(root, bg="#eef3f8")
+frame_pilihan = tk.Frame(tab_rekomendasi, bg="#eef3f8")
 frame_pilihan.pack(pady=5)
 
-# Pilihan budget
 tk.Label(
     frame_pilihan,
     text="Budget:",
@@ -163,15 +264,14 @@ tk.Label(
 
 pilihan_budget = ttk.Combobox(
     frame_pilihan,
-    values=list(data_laptop.keys()),
+    values=list(data_rekomendasi.keys()),
     state="readonly",
-    width=27,
+    width=30,
     font=("Arial", 10)
 )
 pilihan_budget.grid(row=0, column=1, padx=8, pady=8)
 pilihan_budget.set("Rp3 juta - Rp5 juta")
 
-# Pilihan kebutuhan
 tk.Label(
     frame_pilihan,
     text="Kebutuhan:",
@@ -183,17 +283,16 @@ pilihan_kebutuhan = ttk.Combobox(
     frame_pilihan,
     values=list(data_kebutuhan.keys()),
     state="readonly",
-    width=27,
+    width=30,
     font=("Arial", 10)
 )
 pilihan_kebutuhan.grid(row=1, column=1, padx=8, pady=8)
 pilihan_kebutuhan.set("Coding / TKJ")
 
-# Tombol
-frame_tombol = tk.Frame(root, bg="#eef3f8")
+frame_tombol = tk.Frame(tab_rekomendasi, bg="#eef3f8")
 frame_tombol.pack(pady=12)
 
-tombol_rekomendasi = tk.Button(
+tk.Button(
     frame_tombol,
     text="Tampilkan Rekomendasi",
     command=tampilkan_rekomendasi,
@@ -204,10 +303,9 @@ tombol_rekomendasi = tk.Button(
     padx=12,
     pady=8,
     cursor="hand2"
-)
-tombol_rekomendasi.pack(side="left", padx=5)
+).pack(side="left", padx=5)
 
-tombol_reset = tk.Button(
+tk.Button(
     frame_tombol,
     text="Reset",
     command=reset_pilihan,
@@ -215,12 +313,10 @@ tombol_reset = tk.Button(
     padx=15,
     pady=8,
     cursor="hand2"
-)
-tombol_reset.pack(side="left", padx=5)
+).pack(side="left", padx=5)
 
-# Kotak hasil
-frame_hasil = tk.Frame(root, bg="#eef3f8")
-frame_hasil.pack(fill="both", expand=True, padx=20, pady=(5, 20))
+frame_hasil = tk.Frame(tab_rekomendasi, bg="#eef3f8")
+frame_hasil.pack(fill="both", expand=True, padx=18, pady=(5, 18))
 
 hasil = tk.Text(
     frame_hasil,
@@ -236,5 +332,61 @@ hasil = tk.Text(
 )
 hasil.pack(fill="both", expand=True)
 
-# Menjalankan aplikasi
+# =====================================
+# ISI TAB PERTEMUAN 2
+# =====================================
+
+tk.Label(
+    tab_daftar,
+    text=f"DAFTAR MEREK DAN MODEL LAPTOP ({len(data_laptop)} DATA)",
+    font=("Arial", 13, "bold"),
+    bg="#eef3f8",
+    fg="#17365d"
+).pack(anchor="w", padx=15, pady=(15, 8))
+
+area = tk.Frame(tab_daftar, bg="#eef3f8")
+area.pack(fill="both", expand=True, padx=8, pady=(0, 8))
+
+canvas = tk.Canvas(area, bg="#eef3f8", highlightthickness=0)
+scrollbar = ttk.Scrollbar(area, orient="vertical", command=canvas.yview)
+daftar_frame = tk.Frame(canvas, bg="#eef3f8")
+
+daftar_frame.bind(
+    "<Configure>",
+    lambda event: canvas.configure(scrollregion=canvas.bbox("all"))
+)
+
+canvas_window = canvas.create_window(
+    (0, 0),
+    window=daftar_frame,
+    anchor="nw"
+)
+
+def sesuaikan_lebar(event):
+    canvas.itemconfigure(canvas_window, width=event.width)
+
+canvas.bind("<Configure>", sesuaikan_lebar)
+canvas.configure(yscrollcommand=scrollbar.set)
+
+canvas.pack(side="left", fill="both", expand=True)
+scrollbar.pack(side="right", fill="y")
+
+tk.Button(
+    tab_daftar,
+    text="Muat Ulang Daftar",
+    command=tampilkan_data_laptop,
+    font=("Arial", 10, "bold"),
+    bg="#2874a6",
+    fg="white",
+    activebackground="#1b4f72",
+    activeforeground="white",
+    relief="flat",
+    padx=14,
+    pady=8
+).pack(pady=(0, 12))
+
+# TAMPILKAN DATA SAAT APLIKASI DIBUKA
+tampilkan_data_laptop()
+
+# MENJALANKAN APLIKASI
 root.mainloop()
