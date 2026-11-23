@@ -1,608 +1,604 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-# =====================================
-# DATA REKOMENDASI PERTEMUAN 1
-# =====================================
 
-data_rekomendasi = {
-    "Di bawah Rp3 juta": {
-        "nama": "Laptop Bekas Bisnis",
-        "harga": "Rp2.000.000 - Rp2.999.000",
-        "prosesor": "Intel Core i5 generasi 8 atau setara",
-        "ram": "8 GB",
-        "storage": "SSD 256 GB",
-    },
-    "Rp3 juta - Rp5 juta": {
-        "nama": "Laptop Pelajar Entry-Level",
-        "harga": "Rp3.000.000 - Rp5.000.000",
-        "prosesor": "Intel Core i3 atau AMD Ryzen 3",
-        "ram": "8 GB",
-        "storage": "SSD 256 GB",
-    },
-    "Rp5 juta - Rp7 juta": {
-        "nama": "Laptop Pelajar Menengah",
-        "harga": "Rp5.000.000 - Rp7.000.000",
-        "prosesor": "Intel Core i5 atau AMD Ryzen 5",
-        "ram": "8 GB - 16 GB",
-        "storage": "SSD 512 GB",
-    },
-    "Rp7 juta - Rp10 juta": {
-        "nama": "Laptop Produktivitas",
-        "harga": "Rp7.000.000 - Rp10.000.000",
-        "prosesor": "Intel Core i5 atau AMD Ryzen 5 generasi baru",
-        "ram": "16 GB",
-        "storage": "SSD 512 GB",
-    },
-    "Di atas Rp10 juta": {
-        "nama": "Laptop Performa Tinggi",
-        "harga": "Mulai Rp10.000.000",
-        "prosesor": "Intel Core i5/i7 atau AMD Ryzen 5/7 generasi baru",
-        "ram": "16 GB - 32 GB",
-        "storage": "SSD 512 GB - 1 TB",
-    }
-}
+# =========================
+# DATA LAPTOP
+# =========================
 
-# =====================================
-# DATA KEBUTUHAN PENGGUNA
-# =====================================
-
-data_kebutuhan = {
-    "Belajar biasa": {
-        "kegunaan": "Mengetik tugas, browsing, dan belajar online",
-        "saran": "Utamakan laptop yang ringan dan baterai tahan lama."
-    },
-    "Coding / TKJ": {
-        "kegunaan": "Python, VS Code, dan praktikum jaringan",
-        "saran": "Disarankan RAM 16 GB untuk multitasking dan virtual machine."
-    },
-    "Desain grafis": {
-        "kegunaan": "Desain poster, logo, dan pengeditan gambar",
-        "saran": "Pilih layar berkualitas dan RAM yang memadai."
-    },
-    "Editing video": {
-        "kegunaan": "Mengedit video dan membuat konten",
-        "saran": "Utamakan prosesor kuat, RAM besar, dan GPU sesuai kebutuhan."
-    }
-}
-
-# =====================================
-# DATA LAPTOP PERTEMUAN 2
-# =====================================
-
-data_laptop = [
+daftar_laptop = [
     {
-        "merek": "ASUS",
-        "model": "Vivobook 14",
+        "nama": "ASUS Vivobook Go 14",
+        "harga": 4500000,
+        "processor": "AMD Ryzen 3",
+        "ram": "8 GB",
+        "storage": "256 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding"],
+        "deskripsi": "Cocok untuk belajar, tugas sekolah, dan coding ringan."
+    },
+    {
+        "nama": "Acer Aspire Lite",
+        "harga": 5000000,
+        "processor": "Intel Core i3",
+        "ram": "8 GB",
+        "storage": "512 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding"],
+        "deskripsi": "Cocok untuk tugas sekolah dan kegiatan sehari-hari."
+    },
+    {
+        "nama": "Lenovo IdeaPad Slim 3",
+        "harga": 6000000,
+        "processor": "AMD Ryzen 5",
+        "ram": "8 GB",
+        "storage": "512 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding"],
+        "deskripsi": "Cocok untuk multitasking dan pemrograman."
+    },
+    {
+        "nama": "ASUS Vivobook 15",
+        "harga": 7000000,
+        "processor": "Intel Core i5",
+        "ram": "16 GB",
+        "storage": "512 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding", "desain"],
+        "deskripsi": "Cocok untuk coding dan desain ringan."
+    },
+    {
+        "nama": "Acer Aspire 5",
         "harga": 7500000,
         "processor": "Intel Core i5",
-        "ram": "8 GB"
+        "ram": "16 GB",
+        "storage": "512 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding", "desain"],
+        "deskripsi": "Cocok untuk belajar TKJ, multitasking, dan desain ringan."
     },
     {
-        "merek": "Acer",
-        "model": "Aspire 5",
-        "harga": 8000000,
-        "processor": "Intel Core i5",
-        "ram": "8 GB"
-    },
-    {
-        "merek": "Lenovo",
-        "model": "IdeaPad Slim 3",
-        "harga": 7000000,
-        "processor": "AMD Ryzen 5",
-        "ram": "8 GB"
-    },
-    {
-        "merek": "HP",
-        "model": "Pavilion 14",
+        "nama": "Lenovo IdeaPad Slim 5",
         "harga": 8500000,
+        "processor": "AMD Ryzen 5",
+        "ram": "16 GB",
+        "storage": "512 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding", "desain"],
+        "deskripsi": "Cocok untuk pekerjaan sekolah dan aplikasi produktivitas."
+    },
+    {
+        "nama": "ASUS Vivobook S",
+        "harga": 9500000,
+        "processor": "AMD Ryzen 7",
+        "ram": "16 GB",
+        "storage": "512 GB SSD",
+        "gpu": "Integrated Graphics",
+        "kebutuhan": ["umum", "coding", "desain"],
+        "deskripsi": "Cocok untuk multitasking dan pekerjaan yang lebih berat."
+    },
+    {
+        "nama": "Acer Aspire 7",
+        "harga": 10500000,
+        "processor": "Intel Core i7",
+        "ram": "16 GB",
+        "storage": "1 TB SSD",
+        "gpu": "NVIDIA GeForce RTX",
+        "kebutuhan": ["umum", "coding", "desain", "editing"],
+        "deskripsi": "Cocok untuk desain grafis dan editing."
+    },
+    {
+        "nama": "Lenovo LOQ",
+        "harga": 12000000,
         "processor": "Intel Core i5",
-        "ram": "16 GB"
+        "ram": "16 GB",
+        "storage": "512 GB SSD",
+        "gpu": "NVIDIA GeForce RTX",
+        "kebutuhan": ["coding", "desain", "editing"],
+        "deskripsi": "Cocok untuk editing, desain, dan aplikasi berat."
+    },
+    {
+        "nama": "ASUS TUF Gaming",
+        "harga": 14000000,
+        "processor": "AMD Ryzen 7",
+        "ram": "16 GB",
+        "storage": "1 TB SSD",
+        "gpu": "NVIDIA GeForce RTX",
+        "kebutuhan": ["coding", "desain", "editing"],
+        "deskripsi": "Cocok untuk editing video dan pekerjaan grafis."
+    },
+    {
+        "nama": "Acer Nitro",
+        "harga": 15000000,
+        "processor": "Intel Core i7",
+        "ram": "16 GB",
+        "storage": "1 TB SSD",
+        "gpu": "NVIDIA GeForce RTX",
+        "kebutuhan": ["coding", "desain", "editing"],
+        "deskripsi": "Cocok untuk editing video dan penggunaan aplikasi berat."
+    },
+    {
+        "nama": "Lenovo Legion",
+        "harga": 18000000,
+        "processor": "AMD Ryzen 7",
+        "ram": "32 GB",
+        "storage": "1 TB SSD",
+        "gpu": "NVIDIA GeForce RTX",
+        "kebutuhan": ["coding", "desain", "editing"],
+        "deskripsi": "Cocok untuk multitasking berat dan pekerjaan kreatif."
     }
 ]
 
-# =====================================
-# FUNGSI FORMAT RUPIAH
-# =====================================
 
-def format_rupiah(angka):
-    return "Rp" + f"{angka:,}".replace(",", ".")
+# =========================
+# PENGATURAN BUDGET
+# =========================
+
+pilihan_budget = {
+    "Rp3 - 5 juta": (3000000, 5000000),
+    "Rp5 - 7 juta": (5000000, 7000000),
+    "Rp7 - 9 juta": (7000000, 9000000),
+    "Rp9 - 12 juta": (9000000, 12000000),
+    "Rp12 juta ke atas": (12000000, 999999999)
+}
+
+pilihan_kebutuhan = {
+    "Belajar biasa": "umum",
+    "Coding / TKJ": "coding",
+    "Desain grafis": "desain",
+    "Editing video": "editing"
+}
 
 
-# =====================================
-# FUNGSI PERTEMUAN 1
-# =====================================
+# =========================
+# FUNGSI BANTU
+# =========================
 
-def tampilkan_rekomendasi():
-    budget = pilihan_budget.get()
-    kebutuhan = pilihan_kebutuhan.get()
+def format_rupiah(nominal):
+    return "Rp{:,.0f}".format(nominal).replace(",", ".")
+
+
+def cari_laptop(nama):
+    for laptop in daftar_laptop:
+        if laptop["nama"] == nama:
+            return laptop
+    return None
+
+
+def tampilkan_text(widget, isi):
+    widget.config(state="normal")
+    widget.delete("1.0", tk.END)
+    widget.insert(tk.END, isi)
+    widget.config(state="disabled")
+
+
+# =========================
+# FUNGSI REKOMENDASI
+# =========================
+
+def rekomendasikan_laptop():
+    budget = combo_budget.get()
+    kebutuhan = combo_kebutuhan.get()
 
     if not budget or not kebutuhan:
         messagebox.showwarning(
             "Peringatan",
-            "Pilih budget dan kebutuhan terlebih dahulu!"
+            "Silakan pilih budget dan kebutuhan terlebih dahulu."
         )
         return
 
-    laptop = data_rekomendasi[budget]
-    tujuan = data_kebutuhan[kebutuhan]
+    batas_min, batas_max = pilihan_budget[budget]
+    kategori = pilihan_kebutuhan[kebutuhan]
 
-    hasil.delete("1.0", tk.END)
+    hasil = []
 
-    hasil.insert(tk.END, "HASIL REKOMENDASI LAPTOP\n")
-    hasil.insert(tk.END, "=" * 42 + "\n\n")
-    hasil.insert(tk.END, f"Kategori     : {laptop['nama']}\n")
-    hasil.insert(tk.END, f"Budget       : {laptop['harga']}\n")
-    hasil.insert(tk.END, f"Kebutuhan    : {kebutuhan}\n\n")
+    for laptop in daftar_laptop:
+        if batas_min <= laptop["harga"] <= batas_max:
+            if kategori in laptop["kebutuhan"]:
+                hasil.append(laptop)
 
-    hasil.insert(tk.END, "SPESIFIKASI YANG DISARANKAN\n")
-    hasil.insert(tk.END, "-" * 42 + "\n")
-    hasil.insert(tk.END, f"Prosesor     : {laptop['prosesor']}\n")
-    hasil.insert(tk.END, f"RAM          : {laptop['ram']}\n")
-    hasil.insert(tk.END, f"Penyimpanan  : {laptop['storage']}\n\n")
+    if not hasil:
+        tampilkan_text(
+            output_rekomendasi,
+            "Maaf, laptop yang sesuai belum ditemukan.\n"
+            "Silakan pilih budget atau kebutuhan lainnya."
+        )
+        return
 
-    hasil.insert(tk.END, "KEGUNAAN\n")
-    hasil.insert(tk.END, "-" * 42 + "\n")
-    hasil.insert(tk.END, tujuan["kegunaan"] + "\n\n")
+    hasil.sort(key=lambda x: x["harga"])
 
-    hasil.insert(tk.END, "TIPS MEMBELI\n")
-    hasil.insert(tk.END, "-" * 42 + "\n")
-    hasil.insert(tk.END, tujuan["saran"] + "\n\n")
+    teks = "HASIL REKOMENDASI LAPTOP\n"
+    teks += "=" * 40 + "\n\n"
+    teks += f"Budget: {budget}\n"
+    teks += f"Kebutuhan: {kebutuhan}\n"
+    teks += f"Jumlah laptop ditemukan: {len(hasil)}\n\n"
 
-    hasil.insert(
-        tk.END,
-        "Catatan: Harga dan spesifikasi merupakan perkiraan."
+    for nomor, laptop in enumerate(hasil, start=1):
+        teks += f"{nomor}. {laptop['nama']}\n"
+        teks += f"Harga: {format_rupiah(laptop['harga'])}\n"
+        teks += f"Processor: {laptop['processor']}\n"
+        teks += f"RAM: {laptop['ram']}\n"
+        teks += f"Storage: {laptop['storage']}\n"
+        teks += f"GPU: {laptop['gpu']}\n"
+        teks += f"Keterangan: {laptop['deskripsi']}\n"
+        teks += "-" * 40 + "\n"
+
+    tampilkan_text(output_rekomendasi, teks)
+
+
+# =========================
+# FUNGSI PERBANDINGAN
+# =========================
+
+def bandingkan_laptop():
+    nama1 = combo_laptop1.get()
+    nama2 = combo_laptop2.get()
+
+    if not nama1 or not nama2:
+        messagebox.showwarning(
+            "Peringatan",
+            "Silakan pilih kedua laptop yang ingin dibandingkan."
+        )
+        return
+
+    if nama1 == nama2:
+        messagebox.showwarning(
+            "Peringatan",
+            "Pilih dua laptop yang berbeda untuk dibandingkan."
+        )
+        return
+
+    pilihan_laptop1 = cari_laptop(nama1)
+    pilihan_laptop2 = cari_laptop(nama2)
+
+    if pilihan_laptop1 is None or pilihan_laptop2 is None:
+        messagebox.showerror(
+            "Error",
+            "Data laptop tidak ditemukan."
+        )
+        return
+
+    hasil_perbandingan = (
+        "HASIL PERBANDINGAN LAPTOP\n"
+        + "=" * 55 + "\n\n"
+        + f"{pilihan_laptop1['nama']}\n"
+        + f"Harga: {format_rupiah(pilihan_laptop1['harga'])}\n"
+        + f"Processor: {pilihan_laptop1['processor']}\n"
+        + f"RAM: {pilihan_laptop1['ram']}\n"
+        + f"Storage: {pilihan_laptop1['storage']}\n"
+        + f"GPU: {pilihan_laptop1['gpu']}\n\n"
+        + "-" * 55 + "\n\n"
+        + f"{pilihan_laptop2['nama']}\n"
+        + f"Harga: {format_rupiah(pilihan_laptop2['harga'])}\n"
+        + f"Processor: {pilihan_laptop2['processor']}\n"
+        + f"RAM: {pilihan_laptop2['ram']}\n"
+        + f"Storage: {pilihan_laptop2['storage']}\n"
+        + f"GPU: {pilihan_laptop2['gpu']}\n\n"
+        + "=" * 55 + "\n"
     )
 
+    selisih = abs(
+        pilihan_laptop1["harga"] - pilihan_laptop2["harga"]
+    )
 
-def reset_pilihan():
-    pilihan_budget.set("Rp3 juta - Rp5 juta")
-    pilihan_kebutuhan.set("Coding / TKJ")
-    hasil.delete("1.0", tk.END)
-
-
-# =====================================
-# FUNGSI PERTEMUAN 2
-# =====================================
-
-def tampilkan_data_laptop():
-    for widget in daftar_frame.winfo_children():
-        widget.destroy()
-
-    for laptop in data_laptop:
-        kartu = tk.Frame(
-            daftar_frame,
-            bg="white",
-            bd=1,
-            relief="solid",
-            padx=14,
-            pady=10
+    if pilihan_laptop1["harga"] < pilihan_laptop2["harga"]:
+        hasil_perbandingan += (
+            f"{pilihan_laptop1['nama']} lebih murah "
+            f"{format_rupiah(selisih)}.\n"
         )
-        kartu.pack(fill="x", padx=12, pady=7)
-
-        tk.Label(
-            kartu,
-            text=f"{laptop['merek']} - {laptop['model']}",
-            font=("Arial", 12, "bold"),
-            bg="white",
-            fg="#17365D",
-            anchor="w"
-        ).pack(fill="x")
-
-        detail = (
-            f"Harga       : {format_rupiah(laptop['harga'])}\n"
-            f"Processor   : {laptop['processor']}\n"
-            f"RAM         : {laptop['ram']}"
+    elif pilihan_laptop2["harga"] < pilihan_laptop1["harga"]:
+        hasil_perbandingan += (
+            f"{pilihan_laptop2['nama']} lebih murah "
+            f"{format_rupiah(selisih)}.\n"
         )
-
-        tk.Label(
-            kartu,
-            text=detail,
-            font=("Arial", 10),
-            bg="white",
-            fg="#333333",
-            justify="left",
-            anchor="w"
-        ).pack(fill="x", pady=(5, 0))
-
-
-# =====================================
-# FUNGSI PERTEMUAN 3
-# PENCARIAN LAPTOP
-# =====================================
-
-def cari_laptop():
-    kata_kunci = entry_cari.get().lower().strip()
-    budget = pilihan_filter.get()
-
-    if not kata_kunci and budget == "Semua Budget":
-        hasil_cari.delete("1.0", tk.END)
-        hasil_cari.insert(
-            tk.END,
-            "Masukkan merek/model atau pilih budget untuk mencari laptop."
-        )
-        return
-
-    hasil_filter = []
-
-    for laptop in data_laptop:
-
-        cocok_kata = (
-            kata_kunci in laptop["merek"].lower()
-            or kata_kunci in laptop["model"].lower()
-            or kata_kunci in laptop["processor"].lower()
-        )
-
-        cocok_budget = True
-
-        if budget == "Di bawah Rp3 juta":
-            cocok_budget = laptop["harga"] < 3000000
-
-        elif budget == "Rp3 juta - Rp5 juta":
-            cocok_budget = 3000000 <= laptop["harga"] <= 5000000
-
-        elif budget == "Rp5 juta - Rp7 juta":
-            cocok_budget = 5000000 < laptop["harga"] <= 7000000
-
-        elif budget == "Rp7 juta - Rp10 juta":
-            cocok_budget = 7000000 < laptop["harga"] <= 10000000
-
-        elif budget == "Di atas Rp10 juta":
-            cocok_budget = laptop["harga"] > 10000000
-
-        if cocok_kata and cocok_budget:
-            hasil_filter.append(laptop)
-
-    hasil_cari.delete("1.0", tk.END)
-
-    hasil_cari.insert(tk.END, "HASIL PENCARIAN LAPTOP\n")
-    hasil_cari.insert(tk.END, "=" * 42 + "\n\n")
-
-    if hasil_filter:
-
-        hasil_cari.insert(
-            tk.END,
-            f"Ditemukan {len(hasil_filter)} laptop.\n\n"
-        )
-
-        for nomor, laptop in enumerate(hasil_filter, start=1):
-
-            hasil_cari.insert(
-                tk.END,
-                f"{nomor}. {laptop['merek']} - {laptop['model']}\n"
-            )
-
-            hasil_cari.insert(
-                tk.END,
-                f"   Harga     : {format_rupiah(laptop['harga'])}\n"
-            )
-
-            hasil_cari.insert(
-                tk.END,
-                f"   Prosesor  : {laptop['processor']}\n"
-            )
-
-            hasil_cari.insert(
-                tk.END,
-                f"   RAM       : {laptop['ram']}\n\n"
-            )
-
     else:
-        hasil_cari.insert(
-            tk.END,
-            "Laptop tidak ditemukan.\n"
-            "Silakan ubah kata kunci atau budget."
+        hasil_perbandingan += "Harga kedua laptop sama.\n"
+
+    if pilihan_laptop1["ram"] == pilihan_laptop2["ram"]:
+        hasil_perbandingan += "RAM kedua laptop sama.\n"
+    else:
+        hasil_perbandingan += (
+            f"RAM lebih besar: "
+            f"{pilihan_laptop1['nama'] if int(pilihan_laptop1['ram'].split()[0]) > int(pilihan_laptop2['ram'].split()[0]) else pilihan_laptop2['nama']}.\n"
         )
 
-
-def reset_pencarian():
-    entry_cari.delete(0, tk.END)
-    pilihan_filter.set("Semua Budget")
-    hasil_cari.delete("1.0", tk.END)
+    tampilkan_text(output_perbandingan, hasil_perbandingan)
 
 
-# =====================================
-# MEMBUAT JENDELA APLIKASI
-# =====================================
+# =========================
+# FUNGSI PANDUAN
+# =========================
+
+def tampilkan_panduan():
+    panduan = """
+PANDUAN PENGGUNAAN APLIKASI
+================================
+
+1. TAB REKOMENDASI LAPTOP
+   - Pilih budget yang tersedia.
+   - Pilih kebutuhan laptop.
+   - Klik tombol Cari Rekomendasi.
+   - Hasil laptop akan ditampilkan.
+
+2. TAB PERBANDINGAN LAPTOP
+   - Pilih laptop pertama.
+   - Pilih laptop kedua.
+   - Pastikan nama laptop berbeda.
+   - Klik tombol Bandingkan Laptop.
+   - Hasil perbandingan akan ditampilkan.
+
+3. TAB PANDUAN
+   - Baca petunjuk penggunaan aplikasi.
+
+TIPS MEMILIH LAPTOP
+================================
+
+Belajar biasa:
+Laptop dengan RAM 8 GB dan SSD sudah cukup
+untuk tugas sekolah dan browsing.
+
+Coding / TKJ:
+Disarankan RAM minimal 8 GB dan SSD
+agar aplikasi pemrograman berjalan lebih nyaman.
+
+Desain grafis:
+Disarankan RAM 16 GB dan processor yang cukup kuat.
+
+Editing video:
+Disarankan RAM 16 GB atau lebih serta GPU
+yang mendukung pekerjaan editing.
+
+Catatan:
+Harga dan spesifikasi laptop dalam aplikasi
+merupakan data contoh dan dapat berubah.
+"""
+    tampilkan_text(output_panduan, panduan)
+
+
+# =========================
+# MEMBUAT WINDOW
+# =========================
 
 root = tk.Tk()
-root.title("Aplikasi Rekomendasi Laptop - Projek TKJ")
-root.geometry("760x700")
-root.minsize(620, 580)
-root.configure(bg="#eef3f8")
+root.title("Aplikasi Rekomendasi Laptop untuk Belajar")
+root.geometry("850x650")
+root.minsize(700, 550)
+root.configure(bg="#f1f4f9")
+
+style = ttk.Style()
+style.theme_use("clam")
+
+style.configure(
+    "TNotebook",
+    background="#f1f4f9"
+)
+
+style.configure(
+    "TNotebook.Tab",
+    padding=(12, 8),
+    font=("Arial", 10, "bold")
+)
+
+style.configure(
+    "TButton",
+    padding=8,
+    font=("Arial", 10, "bold")
+)
+
+style.configure(
+    "TLabel",
+    background="#f1f4f9",
+    font=("Arial", 10)
+)
+
+
+# =========================
+# HEADER
+# =========================
+
+header = tk.Frame(root, bg="#243b55", pady=15)
+header.pack(fill="x")
 
 judul = tk.Label(
-    root,
+    header,
     text="APLIKASI REKOMENDASI LAPTOP",
-    font=("Arial", 20, "bold"),
-    bg="#17365d",
+    font=("Arial", 18, "bold"),
     fg="white",
-    pady=15
+    bg="#243b55"
 )
-judul.pack(fill="x")
+judul.pack()
 
 subjudul = tk.Label(
-    root,
-    text="Projek TKJ | Rekomendasi, Data, dan Pencarian Laptop",
+    header,
+    text="Pilih laptop sesuai budget dan kebutuhan belajar",
     font=("Arial", 10),
-    bg="#17365d",
-    fg="white"
+    fg="white",
+    bg="#243b55"
 )
-subjudul.pack(fill="x", pady=(0, 12))
+subjudul.pack(pady=(5, 0))
 
 
-# =====================================
-# MEMBUAT TAB
-# =====================================
+# =========================
+# NOTEBOOK / TAB
+# =========================
 
 notebook = ttk.Notebook(root)
-notebook.pack(fill="both", expand=True, padx=15, pady=10)
-
-tab_rekomendasi = tk.Frame(notebook, bg="#eef3f8")
-tab_daftar = tk.Frame(notebook, bg="#eef3f8")
-tab_pencarian = tk.Frame(notebook, bg="#eef3f8")
-
-notebook.add(tab_rekomendasi, text="Pertemuan 1 - Rekomendasi")
-notebook.add(tab_daftar, text="Pertemuan 2 - Data Laptop")
-notebook.add(tab_pencarian, text="Pertemuan 3 - Pencarian")
+notebook.pack(fill="both", expand=True, padx=12, pady=12)
 
 
-# =====================================
-# ISI TAB PERTEMUAN 1
-# =====================================
+tab_rekomendasi = tk.Frame(notebook, bg="#f1f4f9")
+tab_perbandingan = tk.Frame(notebook, bg="#f1f4f9")
+tab_panduan = tk.Frame(notebook, bg="#f1f4f9")
 
-tk.Label(
-    tab_rekomendasi,
-    text="Pilih laptop sesuai budget dan kebutuhanmu",
-    font=("Arial", 11),
-    bg="#eef3f8",
-    fg="#475569"
-).pack(pady=(18, 12))
+notebook.add(tab_rekomendasi, text="Rekomendasi")
+notebook.add(tab_perbandingan, text="Perbandingan")
+notebook.add(tab_panduan, text="Panduan")
 
-frame_pilihan = tk.Frame(tab_rekomendasi, bg="#eef3f8")
-frame_pilihan.pack(pady=5)
+
+# =========================
+# TAB REKOMENDASI
+# =========================
+
+frame_input = tk.Frame(tab_rekomendasi, bg="#f1f4f9")
+frame_input.pack(fill="x", padx=15, pady=15)
 
 tk.Label(
-    frame_pilihan,
-    text="Budget:",
-    font=("Arial", 11, "bold"),
-    bg="#eef3f8"
-).grid(row=0, column=0, sticky="w", padx=8, pady=8)
-
-pilihan_budget = ttk.Combobox(
-    frame_pilihan,
-    values=list(data_rekomendasi.keys()),
-    state="readonly",
-    width=30
-)
-pilihan_budget.grid(row=0, column=1, padx=8, pady=8)
-pilihan_budget.set("Rp3 juta - Rp5 juta")
-
-tk.Label(
-    frame_pilihan,
-    text="Kebutuhan:",
-    font=("Arial", 11, "bold"),
-    bg="#eef3f8"
-).grid(row=1, column=0, sticky="w", padx=8, pady=8)
-
-pilihan_kebutuhan = ttk.Combobox(
-    frame_pilihan,
-    values=list(data_kebutuhan.keys()),
-    state="readonly",
-    width=30
-)
-pilihan_kebutuhan.grid(row=1, column=1, padx=8, pady=8)
-pilihan_kebutuhan.set("Coding / TKJ")
-
-frame_tombol = tk.Frame(tab_rekomendasi, bg="#eef3f8")
-frame_tombol.pack(pady=12)
-
-tk.Button(
-    frame_tombol,
-    text="Tampilkan Rekomendasi",
-    command=tampilkan_rekomendasi,
-    bg="#2563eb",
-    fg="white",
-    font=("Arial", 11, "bold"),
-    padx=12,
-    pady=8
-).pack(side="left", padx=5)
-
-tk.Button(
-    frame_tombol,
-    text="Reset",
-    command=reset_pilihan,
-    padx=15,
-    pady=8
-).pack(side="left", padx=5)
-
-frame_hasil = tk.Frame(tab_rekomendasi, bg="#eef3f8")
-frame_hasil.pack(fill="both", expand=True, padx=18, pady=10)
-
-hasil = tk.Text(
-    frame_hasil,
-    font=("Consolas", 10),
-    wrap="word",
-    padx=12,
-    pady=12,
-    bg="white",
-    fg="#1e293b"
-)
-hasil.pack(fill="both", expand=True)
-
-
-# =====================================
-# ISI TAB PERTEMUAN 2
-# =====================================
-
-tk.Label(
-    tab_daftar,
-    text=f"DAFTAR MEREK DAN MODEL LAPTOP ({len(data_laptop)} DATA)",
-    font=("Arial", 13, "bold"),
-    bg="#eef3f8",
-    fg="#17365d"
-).pack(anchor="w", padx=15, pady=(15, 8))
-
-area = tk.Frame(tab_daftar, bg="#eef3f8")
-area.pack(fill="both", expand=True, padx=8, pady=8)
-
-canvas = tk.Canvas(
-    area,
-    bg="#eef3f8",
-    highlightthickness=0
-)
-
-scrollbar = ttk.Scrollbar(
-    area,
-    orient="vertical",
-    command=canvas.yview
-)
-
-daftar_frame = tk.Frame(canvas, bg="#eef3f8")
-
-daftar_frame.bind(
-    "<Configure>",
-    lambda event: canvas.configure(
-        scrollregion=canvas.bbox("all")
-    )
-)
-
-canvas_window = canvas.create_window(
-    (0, 0),
-    window=daftar_frame,
-    anchor="nw"
-)
-
-def sesuaikan_lebar(event):
-    canvas.itemconfigure(canvas_window, width=event.width)
-
-canvas.bind("<Configure>", sesuaikan_lebar)
-canvas.configure(yscrollcommand=scrollbar.set)
-
-canvas.pack(side="left", fill="both", expand=True)
-scrollbar.pack(side="right", fill="y")
-
-tk.Button(
-    tab_daftar,
-    text="Muat Ulang Daftar",
-    command=tampilkan_data_laptop,
-    bg="#2874a6",
-    fg="white",
-    padx=14,
-    pady=8
-).pack(pady=(0, 12))
-
-
-# =====================================
-# ISI TAB PERTEMUAN 3
-# =====================================
-
-tk.Label(
-    tab_pencarian,
-    text="CARI LAPTOP YANG KAMU INGINKAN",
-    font=("Arial", 15, "bold"),
-    bg="#eef3f8",
-    fg="#17365d"
-).pack(pady=(20, 15))
-
-tk.Label(
-    tab_pencarian,
-    text="Masukkan merek, model, atau prosesor laptop:",
-    font=("Arial", 10),
-    bg="#eef3f8"
-).pack()
-
-entry_cari = tk.Entry(
-    tab_pencarian,
-    font=("Arial", 12),
-    width=38,
-    relief="solid",
-    bd=1
-)
-entry_cari.pack(pady=10, ipady=6)
-
-tk.Label(
-    tab_pencarian,
-    text="Filter berdasarkan budget:",
+    frame_input,
+    text="Pilih Budget:",
     font=("Arial", 10, "bold"),
-    bg="#eef3f8"
-).pack(pady=(8, 4))
+    bg="#f1f4f9"
+).grid(row=0, column=0, sticky="w", pady=5)
 
-pilihan_filter = ttk.Combobox(
-    tab_pencarian,
-    values=[
-        "Semua Budget",
-        "Di bawah Rp3 juta",
-        "Rp3 juta - Rp5 juta",
-        "Rp5 juta - Rp7 juta",
-        "Rp7 juta - Rp10 juta",
-        "Di atas Rp10 juta"
-    ],
+combo_budget = ttk.Combobox(
+    frame_input,
+    values=list(pilihan_budget.keys()),
     state="readonly",
     width=30
 )
-pilihan_filter.pack(pady=5)
-pilihan_filter.set("Semua Budget")
+combo_budget.grid(row=0, column=1, padx=10, pady=5)
+combo_budget.set("Rp3 - 5 juta")
 
-frame_tombol_cari = tk.Frame(
-    tab_pencarian,
-    bg="#eef3f8"
+tk.Label(
+    frame_input,
+    text="Pilih Kebutuhan:",
+    font=("Arial", 10, "bold"),
+    bg="#f1f4f9"
+).grid(row=1, column=0, sticky="w", pady=5)
+
+combo_kebutuhan = ttk.Combobox(
+    frame_input,
+    values=list(pilihan_kebutuhan.keys()),
+    state="readonly",
+    width=30
 )
-frame_tombol_cari.pack(pady=12)
+combo_kebutuhan.grid(row=1, column=1, padx=10, pady=5)
+combo_kebutuhan.set("Belajar biasa")
 
-tk.Button(
-    frame_tombol_cari,
-    text="Cari Laptop",
-    command=cari_laptop,
-    bg="#2563eb",
-    fg="white",
-    font=("Arial", 11, "bold"),
-    padx=20,
-    pady=8
-).pack(side="left", padx=5)
-
-tk.Button(
-    frame_tombol_cari,
-    text="Reset",
-    command=reset_pencarian,
-    font=("Arial", 11),
-    padx=20,
-    pady=8
-).pack(side="left", padx=5)
-
-frame_hasil_cari = tk.Frame(
-    tab_pencarian,
-    bg="#eef3f8"
+btn_rekomendasi = ttk.Button(
+    frame_input,
+    text="Cari Rekomendasi",
+    command=rekomendasikan_laptop
 )
-frame_hasil_cari.pack(
+btn_rekomendasi.grid(
+    row=2,
+    column=0,
+    columnspan=2,
+    pady=12
+)
+
+frame_output_rekomendasi = tk.Frame(tab_rekomendasi)
+frame_output_rekomendasi.pack(
     fill="both",
     expand=True,
-    padx=18,
-    pady=10
+    padx=15,
+    pady=(0, 15)
 )
 
-hasil_cari = tk.Text(
-    frame_hasil_cari,
-    font=("Consolas", 10),
+output_rekomendasi = tk.Text(
+    frame_output_rekomendasi,
     wrap="word",
-    padx=12,
-    pady=12,
-    bg="white",
-    fg="#1e293b"
+    font=("Arial", 10),
+    height=15
 )
-hasil_cari.pack(fill="both", expand=True)
+output_rekomendasi.pack(fill="both", expand=True)
 
-hasil_cari.insert(
-    tk.END,
-    "Silakan masukkan merek atau model laptop,\n"
-    "kemudian tekan tombol Cari Laptop."
+output_rekomendasi.config(state="disabled")
+
+
+# =========================
+# TAB PERBANDINGAN
+# =========================
+
+frame_compare_input = tk.Frame(tab_perbandingan, bg="#f1f4f9")
+frame_compare_input.pack(fill="x", padx=15, pady=15)
+
+nama_laptop = [laptop["nama"] for laptop in daftar_laptop]
+
+tk.Label(
+    frame_compare_input,
+    text="Laptop Pertama:",
+    font=("Arial", 10, "bold"),
+    bg="#f1f4f9"
+).grid(row=0, column=0, sticky="w", pady=5)
+
+combo_laptop1 = ttk.Combobox(
+    frame_compare_input,
+    values=nama_laptop,
+    state="readonly",
+    width=35
+)
+combo_laptop1.grid(row=0, column=1, padx=10, pady=5)
+combo_laptop1.set(nama_laptop[0])
+
+tk.Label(
+    frame_compare_input,
+    text="Laptop Kedua:",
+    font=("Arial", 10, "bold"),
+    bg="#f1f4f9"
+).grid(row=1, column=0, sticky="w", pady=5)
+
+combo_laptop2 = ttk.Combobox(
+    frame_compare_input,
+    values=nama_laptop,
+    state="readonly",
+    width=35
+)
+combo_laptop2.grid(row=1, column=1, padx=10, pady=5)
+combo_laptop2.set(nama_laptop[1])
+
+btn_compare = ttk.Button(
+    frame_compare_input,
+    text="Bandingkan Laptop",
+    command=bandingkan_laptop
+)
+btn_compare.grid(
+    row=2,
+    column=0,
+    columnspan=2,
+    pady=12
 )
 
+frame_output_compare = tk.Frame(tab_perbandingan)
+frame_output_compare.pack(
+    fill="both",
+    expand=True,
+    padx=15,
+    pady=(0, 15)
+)
 
-# =====================================
+output_perbandingan = tk.Text(
+    frame_output_compare,
+    wrap="word",
+    font=("Arial", 10),
+    height=15
+)
+output_perbandingan.pack(fill="both", expand=True)
+
+output_perbandingan.config(state="disabled")
+
+
+# =========================
+# TAB PANDUAN
+# =========================
+
+frame_panduan = tk.Frame(tab_panduan)
+frame_panduan.pack(fill="both", expand=True, padx=15, pady=15)
+
+output_panduan = tk.Text(
+    frame_panduan,
+    wrap="word",
+    font=("Arial", 10),
+    height=20
+)
+output_panduan.pack(fill="both", expand=True)
+
+output_panduan.config(state="disabled")
+
+tampilkan_panduan()
+
+
+# =========================
 # MENJALANKAN APLIKASI
-# =====================================
-
-tampilkan_data_laptop()
+# =========================
 
 root.mainloop()
